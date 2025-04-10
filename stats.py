@@ -17,3 +17,8 @@ def get_char_count(contents):
             char_count_dict[char] = 1
 
     return char_count_dict
+
+def get_char_count_sorted(char_count_dict):
+    sorted_dict = dict(sorted(char_count_dict.items(), key=lambda item: item[1], reverse=True))
+
+    return sorted_dict
