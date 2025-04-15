@@ -3,6 +3,7 @@
 from stats import get_word_count
 from stats import get_char_count
 from stats import get_char_count_sorted
+import re
 
 # -- VARIABLES ------------------------------
 
@@ -20,9 +21,17 @@ def get_book_text(book_name):
 # -- MAIN -----------------------------------
 
 def main():
+    print("============ BOOKBOT ============")
+    print("Analyzing book found at books/frankenstein.txt...")
+    print("----------- Word Count ----------")
     word_count = get_word_count(get_book_text("frankenstein"))
-    print(f"{word_count} words found in the document")
-    print(get_char_count_sorted(get_char_count(get_book_text("frankenstein"))))
+    print(f"Found {word_count} total words")
+    print("--------- Character Count -------")
+    dict_of_chars = get_char_count_sorted(get_char_count(get_book_text("frankenstein")))
+    for key, value in dict_of_chars.items():
+         if (re.match(r'[^[\W_]+$', key)):
+              print(f"{key}: {value}")
+    print("============= END ===============")
 
 # -- EXECUTE --------------------------------
 
